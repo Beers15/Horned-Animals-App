@@ -14,7 +14,7 @@ The purpsose of this app is to display images and information on various horned 
 * I referenced the above link to review how to load json data into components
 
 
-# LAB - 01
+# LAB - 02
 
 ## Horned Animals Application
 
