@@ -57,3 +57,29 @@ Start time: 8:20
 
 Finish time: 9:30
 Actual time needed to complete: 1hr 10m
+
+# LAB - 03
+
+## Horned Animals Application
+
+The purpose of this app is to display images and information on various horned animals. Users can filter through animals using a horn count and save their favorite images.
+
+### Author: Alexander Beers
+
+### Links and Resources
+N/A
+
+### Reflections and Comments
+In order to call prop functions which allowed the state in parent components to be modfied by children, the code had to be refactored in multiple components
+
+_As per the assignment guidelines, a time estimation for each feature is included here:_
+
+Number and name of feature: Feature #1: Display a Modal
+
+Estimate of time needed to complete: 45m
+
+Start time: 1:20
+
+Finish time: 2:50
+
+Actual time needed to complete: 1h 30m

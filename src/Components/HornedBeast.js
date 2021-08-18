@@ -14,6 +14,7 @@ class HornedBeast extends Component {
   handleImgClick = () => {
     this.setState({timesFavorited: this.state.timesFavorited + 1});
     console.log(this.state.timesFavorited);
+    this.props.selectBeast(this.props.imgUrl, this.props.description, this.props.title);
   }
 
   render() {
