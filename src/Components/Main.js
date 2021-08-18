@@ -1,9 +1,17 @@
 import HornedBeast from './HornedBeast';
-import { hornedBeasts } from '../data';
+import animalData from '../data';
 
 function Main() {
-  let beasts = hornedBeasts.map(beast => {
-    return <HornedBeast title={beast.title} description={beast.description} imgUrl={beast.image_url} alt={beast.keyword} />;
+  let beasts = animalData.map((beast, index) => {
+    return (
+      <HornedBeast
+        key={index} //Not rearrangin items in array
+        title={beast.title}
+        description={beast.description}
+        imgUrl={beast.image_url}
+        alt={beast.keyword}
+      />
+    );
   });
 
   return (
