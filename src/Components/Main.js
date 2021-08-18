@@ -1,44 +1,45 @@
+import { Component } from 'react';
 import HornedBeast from './HornedBeast';
-import animalData from '../data';
-import Col from 'react-bootstrap/Col';
+import BeastRow from './BeastRow';
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
 
-function Main() {
-  let beasts = animalData.map((beast, index) => {
+
+class Main extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {beasts: []};
+  }
+
+  componentDidMount() {
+    let beasts = this.props.animalData.map((beast, index) => {
+      return (
+        <HornedBeast
+          key={index} //Not rearranging items in array
+          title={beast.title}
+          description={beast.description}
+          imgUrl={beast.image_url}
+          alt={beast.keyword}
+        />
+      );
+    });
+    this.setState({beasts: beasts});
+  }
+
+  render() {
     return (
-      <HornedBeast
-        key={index} //Not rearranging items in array
-        title={beast.title}
-        description={beast.description}
-        imgUrl={beast.image_url}
-        alt={beast.keyword}
-      />
+      <Container fluid>
+        {this.state.beasts.map((beast, index) => {
+          if(index % 4 === 0) {
+            return (
+              <BeastRow key={index} beasts={this.state.beasts.slice(index, index + 4)} />
+            );
+          }
+          else return null;
+        })}
+      </Container>
     );
-  });
-
-  return (
-    <Container>
-      {beasts.map((beast, index) => {
-        if(index % 3 === 0) {
-          return (
-            <Row>
-              <Col>
-                {beasts[index]}
-              </Col>
-              <Col>
-                {beasts[index + 1]}
-              </Col>
-              <Col>
-                {beasts[index + 2]}
-              </Col>
-            </Row>
-          );
-        }
-        else return null;
-      })}
-    </Container>
-  );
+  }
 }
 
 export default Main;
