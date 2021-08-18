@@ -1,4 +1,8 @@
 import { Component } from 'react';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Image from 'react-bootstrap/Image';
 
 class HornedBeast extends Component {
   constructor(props) {
@@ -14,26 +18,34 @@ class HornedBeast extends Component {
 
   render() {
     return (
-      <div>
-        <h2>{this.props.title}</h2>
-        <img
-          onClick={this.handleImgClick}
-          src={this.props.imgUrl}
-          alt={this.props.alt}
-          title={this.props.title}
-        />
-        <br />
-        <figure className="fav-figure">
-          <img
-            src="heart.png"
+      <Container>
+        <Row>
+          <h2>{this.props.title}</h2>
+          <Image
+            onClick={this.handleImgClick}
+            src={this.props.imgUrl}
             alt={this.props.alt}
             title={this.props.title}
-            className="fav-heart"
           />
-          <figcaption className="fav-times-text">{this.state.timesFavorited}</figcaption>
-        </figure>
-        <span>{this.props.description}</span>
-      </div>
+        </Row>
+        <Row className="beast-info-row">
+          <Col md="auto">
+            <figure className="fav-figure">
+              <Image
+                src="heart.png"
+                alt={this.props.alt}
+                title={this.props.title}
+                className="fav-heart"
+                fluid
+              />
+              <figcaption className="fav-times-text">{this.state.timesFavorited}</figcaption>
+            </figure>
+          </Col>
+          <Col>
+            <p className="description-txt">{this.props.description}</p>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 
