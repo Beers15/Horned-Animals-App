@@ -3,7 +3,6 @@ import HornedBeast from './HornedBeast';
 import BeastRow from './BeastRow';
 import Container from 'react-bootstrap/Container';
 
-
 class Main extends Component {
   constructor(props) {
     super(props);
@@ -20,10 +19,15 @@ class Main extends Component {
           description={beast.description}
           imgUrl={beast.image_url}
           alt={beast.keyword}
+          selectBeast={this.selectBeast}
         />
       );
     });
     this.setState({beasts: beasts});
+  }
+
+  selectBeast = (imgUrl, description, title) => {
+    this.props.beastSelected(imgUrl, description, title);
   }
 
   render() {

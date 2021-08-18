@@ -4,7 +4,7 @@ import Header from './Components/Header';
 import Main from './Components/Main';
 import Footer from './Components/Footer';
 import animalData from './data';
-//import SelectedBeast from './SelectedBeast';
+import SelectedBeast from './Components/SelectedBeast';
 
 class App extends Component {
   constructor(props) {
@@ -14,21 +14,21 @@ class App extends Component {
       displayModal: false,
       imgUrl: null,
       description: null,
+      title: null,
     };
   }
 
-  toggleModal = (e) => {
+  beastSelected = (imgUrl, description, title) => {
     this.setState({
       displayModal: true,
-      imgUrl: e.target.imgUrl,
-      description: e.target.target.description,
+      imgUrl: imgUrl,
+      description: description,
+      title: title,
     });
-
-    console.log(e.target.imgUrl + e.target.target.description);
   }
 
-  beastSelected = (imgUrl, description) => {
-
+  handleClose = () => {
+    this.setState({displayModal: false});
   }
 
   render() {
@@ -37,9 +37,17 @@ class App extends Component {
         <Header />
         <Main
           animalData={animalData}
-
+          beastSelected={this.beastSelected}
         />
         <Footer />
+
+        <SelectedBeast
+          show={this.state.displayModal}
+          imgUrl={this.state.imgUrl}
+          description={this.state.description}
+          title={this.state.title}
+          handleClose={this.handleClose}
+        />
       </>
     );
   }
