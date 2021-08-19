@@ -49,8 +49,19 @@ h2.title {
 }
 
 .nav-container {
-  width: 400px !important;
+  max-width: 350px !important;
   margin: 0 5px !important;
+}
+
+.drop-down {
+  width: 200px !important;
+  margin: 6px 0 0 15px !important;
+  padding-right: 0px !important;
+}
+
+.search-bar {
+  margin: 0 !important;
+  padding-left: 0px !important;
 }
 
 .card {

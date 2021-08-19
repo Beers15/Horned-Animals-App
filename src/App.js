@@ -15,6 +15,7 @@ class App extends Component {
       imgUrl: null,
       description: null,
       title: null,
+      hornCount: -1,
       searchQuery: '',
     };
   }
@@ -36,14 +37,22 @@ class App extends Component {
     this.setState({searchQuery: searchQuery});
   }
 
+  selectNumHorns = (hornCount) => {
+    this.setState({hornCount: hornCount});
+  }
+
   render() {
     return (
       <div>
-        <Header updateSearchVal={this.updateSearchVal} />
+        <Header
+          updateSearchVal={this.updateSearchVal}
+          selectNumHorns={this.selectNumHorns}
+        />
         <Main
           animalData={animalData}
           beastSelected={this.beastSelected}
           searchQuery={this.state.searchQuery}
+          hornCount={this.state.hornCount}
         />
         <Footer />
 

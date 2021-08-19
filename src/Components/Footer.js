@@ -2,9 +2,9 @@ import Navbar from 'react-bootstrap/Navbar';
 
 function Footer() {
   return (
-    <Navbar bg="dark" variant="dark">
+    <Navbar bg="dark" variant="dark" fixed="bottom">
       <Navbar.Brand href="#home">
-        <span className="nav-title">Author: Alexander Beers</span>
+        <Navbar.Text>Author: Alexander Beers</Navbar.Text>
       </Navbar.Brand>
     </Navbar>
   );

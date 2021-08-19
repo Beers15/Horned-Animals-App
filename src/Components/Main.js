@@ -18,17 +18,16 @@ class Main extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if(this.props.searchQuery !== prevProps.searchQuery) {
-      if(this.props.searchQuery === '') {
-        let matchedBeasts = this.createBeasts(this.props.animalData);
+    let matchedBeasts;
+    if(this.props.searchQuery !== prevProps.searchQuery || this.props.hornCount !== prevProps.hornCount) {
 
-        this.setState({beasts: matchedBeasts});
+      if(this.props.searchQuery === '') {
+        matchedBeasts = this.createBeasts(this.props.animalData);
       } else {
         let beasts = this.props.animalData.filter((beast, index) => this.fuzzy_match(beast.title, this.props.searchQuery));
-        let matchedBeasts = this.createBeasts(beasts);
-
-        this.setState({beasts: matchedBeasts});
+        matchedBeasts = this.createBeasts(beasts);
       }
+      this.setState({beasts: matchedBeasts});
     }
   }
 
@@ -38,18 +37,36 @@ class Main extends Component {
   }
 
   createBeasts = (beasts) => {
-    return beasts.map((beast, index) => {
-      return (
-        <HornedBeast
-          key={beast.image_url}
-          title={beast.title}
-          description={beast.description}
-          imgUrl={beast.image_url}
-          alt={beast.keyword}
-          selectBeast={this.selectBeast}
-        />
-      );
-    });
+    if(this.props.hornCount < 0) {
+      return beasts.map((beast, index) => {
+        return (
+          <HornedBeast
+            key={beast.image_url}
+            title={beast.title}
+            description={beast.description}
+            imgUrl={beast.image_url}
+            alt={beast.keyword}
+            selectBeast={this.selectBeast}
+          />
+        );
+      });
+    } else {
+      beasts = beasts.filter(beast => beast.horns === parseInt(this.props.hornCount));
+
+      return beasts.map((beast, index) => {
+        return (
+          <HornedBeast
+            key={beast.image_url}
+            title={beast.title}
+            description={beast.description}
+            imgUrl={beast.image_url}
+            alt={beast.keyword}
+            selectBeast={this.selectBeast}
+          />
+        );
+      });
+    }
+
   }
 
   fuzzy_match = (str,pattern) => {
@@ -66,7 +83,7 @@ class Main extends Component {
     return (
       <Container>
         {this.state.beasts.map((beast, index) => {
-          if(index % 6 === 0) {
+          if(index % 4 === 0) {
             return (
               <BeastRow key={index} beasts={this.state.beasts.slice(index, index + 4)} />
             );
