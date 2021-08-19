@@ -15,10 +15,12 @@ class App extends Component {
       imgUrl: null,
       description: null,
       title: null,
+      hornCount: -1,
+      searchQuery: '',
     };
   }
 
-  beastSelected = (imgUrl, description, title) => {
+  beastSelected = ({imgUrl, description, title}) => {
     this.setState({
       displayModal: true,
       imgUrl: imgUrl,
@@ -31,13 +33,26 @@ class App extends Component {
     this.setState({displayModal: false});
   }
 
+  updateSearchVal = (searchQuery) => {
+    this.setState({searchQuery: searchQuery});
+  }
+
+  selectNumHorns = (hornCount) => {
+    this.setState({hornCount: hornCount});
+  }
+
   render() {
     return (
-      <>
-        <Header />
+      <div>
+        <Header
+          updateSearchVal={this.updateSearchVal}
+          selectNumHorns={this.selectNumHorns}
+        />
         <Main
           animalData={animalData}
           beastSelected={this.beastSelected}
+          searchQuery={this.state.searchQuery}
+          hornCount={this.state.hornCount}
         />
         <Footer />
 
@@ -48,7 +63,7 @@ class App extends Component {
           title={this.state.title}
           handleClose={this.handleClose}
         />
-      </>
+      </div>
     );
   }
 }
