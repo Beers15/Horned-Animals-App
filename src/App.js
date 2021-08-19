@@ -18,7 +18,7 @@ class App extends Component {
     };
   }
 
-  beastSelected = (imgUrl, description, title) => {
+  beastSelected = ({imgUrl, description, title}) => {
     this.setState({
       displayModal: true,
       imgUrl: imgUrl,
