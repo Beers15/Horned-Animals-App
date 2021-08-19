@@ -10,8 +10,8 @@ export default class SearchBar extends Component {
     return (
       <>
         <Form className="search-form" onSubmit={e => {e.preventDefault();}}>
-          <Form.Group className="mb-3" controlId="searchForm">
-            <Form.Label>Horned Animal Search</Form.Label>
+          <Form.Group className="mb-4" controlId="searchForm">
+            <Form.Label> </Form.Label>
             <Form.Control
               onChange={this.handleChange}
               type="text"

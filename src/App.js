@@ -15,6 +15,7 @@ class App extends Component {
       imgUrl: null,
       description: null,
       title: null,
+      searchQuery: '',
     };
   }
 
@@ -31,13 +32,18 @@ class App extends Component {
     this.setState({displayModal: false});
   }
 
+  updateSearchVal = (searchQuery) => {
+    this.setState({searchQuery: searchQuery});
+  }
+
   render() {
     return (
-      <>
-        <Header />
+      <div>
+        <Header updateSearchVal={this.updateSearchVal} />
         <Main
           animalData={animalData}
           beastSelected={this.beastSelected}
+          searchQuery={this.state.searchQuery}
         />
         <Footer />
 
@@ -48,7 +54,7 @@ class App extends Component {
           title={this.state.title}
           handleClose={this.handleClose}
         />
-      </>
+      </div>
     );
   }
 }

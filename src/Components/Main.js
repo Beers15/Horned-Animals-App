@@ -1,7 +1,6 @@
 import { Component } from 'react';
 import HornedBeast from './HornedBeast';
 import BeastRow from './BeastRow';
-import SearchBar from './SearchBar';
 import Container from 'react-bootstrap/Container';
 
 class Main extends Component {
@@ -10,7 +9,6 @@ class Main extends Component {
 
     this.state = {
       beasts: [],
-      searchQuery: '',
     };
   }
 
@@ -20,13 +18,13 @@ class Main extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if(this.state.searchQuery !== prevState.searchQuery) {
-      if(this.state.searchQuery === '') {
+    if(this.props.searchQuery !== prevProps.searchQuery) {
+      if(this.props.searchQuery === '') {
         let matchedBeasts = this.createBeasts(this.props.animalData);
 
         this.setState({beasts: matchedBeasts});
       } else {
-        let beasts = this.props.animalData.filter((beast, index) => this.fuzzy_match(beast.title, this.state.searchQuery));
+        let beasts = this.props.animalData.filter((beast, index) => this.fuzzy_match(beast.title, this.props.searchQuery));
         let matchedBeasts = this.createBeasts(beasts);
 
         this.setState({beasts: matchedBeasts});
@@ -34,9 +32,6 @@ class Main extends Component {
     }
   }
 
-  updateSearchVal = (searchQuery) => {
-    this.setState({searchQuery: searchQuery});
-  }
 
   selectBeast = (imgUrl, description, title) => {
     this.props.beastSelected(imgUrl, description, title);
@@ -69,10 +64,9 @@ class Main extends Component {
 
   render() {
     return (
-      <Container fluid>
-        <SearchBar updateSearchVal={this.updateSearchVal} />
+      <Container>
         {this.state.beasts.map((beast, index) => {
-          if(index % 4 === 0) {
+          if(index % 6 === 0) {
             return (
               <BeastRow key={index} beasts={this.state.beasts.slice(index, index + 4)} />
             );
