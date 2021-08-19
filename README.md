@@ -2,11 +2,13 @@
 
 ### Author: Alexander Beers
 
-### App Hosted at Netlify link [here](https://nervous-bohr-c5a6c4.netlify.app/)
+###### App Hosted at Netlify link [here](https://nervous-bohr-c5a6c4.netlify.app/)
+
+
+The purpose of this app is to display images and information on various horned animals. Users can filter through animals using a horn count and save their favorite images.
 
 # LAB - 01
 
-The purpose of this app is to display images and information on various horned animals. Users can filter through animals using a horn count and save their favorite images.
 
 ### Links and Resources
 * [load-and-render-json-data-into-react-components](https://www.pluralsight.com/guides/load-and-render-json-data-into-react-components)
@@ -92,7 +94,7 @@ Actual time needed to complete: 1hr 5m
 * [React-Bootstrap Documentation](https://react-bootstrap.github.io/)
 
 ### Reflections and Comments
-* Mapping out a component hiearchy and state beforehand would have made the development process much easier with the last few features.
+Mapping out component hierarchy and state+props beforehand would have made the development process much easier with the last few features.
 
 _As per the assignment guidelines, a time estimation for each feature is included here:_
 
