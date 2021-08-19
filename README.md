@@ -67,7 +67,8 @@ The purpose of this app is to display images and information on various horned a
 ### Author: Alexander Beers
 
 ### Links and Resources
-N/A
+A Fuzzy search regexp fnc was referenced form the following link (./Components/Main.js line 84)
+Roi Dayan, https://stackoverflow.com/questions/23305000/javascript-fuzzy-search-that-makes-sense
 
 ### Reflections and Comments
 In order to call prop functions which allowed the state in parent components to be modfied by children, the code had to be refactored in multiple components
@@ -83,3 +84,13 @@ Start time: 1:20
 Finish time: 2:50
 
 Actual time needed to complete: 1h 30m
+
+Number and name of feature: Feature #2: Implement a Fuzzy search
+
+Estimate of time needed to complete: 45m
+
+Start time: 7:00
+
+Finish time: 8:05
+
+Actual time needed to complete: 1hr 5m
