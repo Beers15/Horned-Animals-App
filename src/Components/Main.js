@@ -20,7 +20,6 @@ class Main extends Component {
   componentDidUpdate(prevProps, prevState) {
     let matchedBeasts;
     if(this.props.searchQuery !== prevProps.searchQuery || this.props.hornCount !== prevProps.hornCount) {
-
       if(this.props.searchQuery === '') {
         matchedBeasts = this.createBeasts(this.props.animalData);
       } else {
@@ -31,42 +30,27 @@ class Main extends Component {
     }
   }
 
-
   selectBeast = (imgUrl, description, title) => {
     this.props.beastSelected(imgUrl, description, title);
   }
 
   createBeasts = (beasts) => {
-    if(this.props.hornCount < 0) {
-      return beasts.map((beast, index) => {
-        return (
-          <HornedBeast
-            key={beast.image_url}
-            title={beast.title}
-            description={beast.description}
-            imgUrl={beast.image_url}
-            alt={beast.keyword}
-            selectBeast={this.selectBeast}
-          />
-        );
-      });
-    } else {
+    if(this.props.hornCount > 0) {
       beasts = beasts.filter(beast => beast.horns === parseInt(this.props.hornCount));
-
-      return beasts.map((beast, index) => {
-        return (
-          <HornedBeast
-            key={beast.image_url}
-            title={beast.title}
-            description={beast.description}
-            imgUrl={beast.image_url}
-            alt={beast.keyword}
-            selectBeast={this.selectBeast}
-          />
-        );
-      });
     }
 
+    return beasts.map((beast, index) => {
+      return (
+        <HornedBeast
+          key={beast.image_url}
+          title={beast.title}
+          description={beast.description}
+          imgUrl={beast.image_url}
+          alt={beast.keyword}
+          selectBeast={this.selectBeast}
+        />
+      );
+    });
   }
 
   fuzzy_match = (str,pattern) => {
